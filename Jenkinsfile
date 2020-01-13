@@ -37,7 +37,10 @@ pipeline {
         cleanWs()
       }
     }
-    post {
+    
+
+  }
+  post {
       always {
         recordIssues enabledForFailure: true, tools: [mavenConsole(), java(), javaDoc()]
         recordIssues enabledForFailure: true, tool: checkStyle()
@@ -46,6 +49,4 @@ pipeline {
         recordIssues enabledForFailure: true, tool: pmdParser(pattern: '**/target/pmd.xml')
       }
     }
-
-  }
 }
